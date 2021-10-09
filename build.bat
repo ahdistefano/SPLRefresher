@@ -1,0 +1,1 @@
+python -m PyInstaller __init__.spec
