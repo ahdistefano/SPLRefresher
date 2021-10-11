@@ -3,7 +3,7 @@ from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtWidgets import QApplication, QLabel, QMainWindow, QMenu, QSystemTrayIcon
 import threading
 import sys
-import refresher
+from refresher import Refresher
 import os
 
 
@@ -26,7 +26,7 @@ class window(QMainWindow):
         self.setWindowIcon(icon)
         self.setFixedSize(QSize(312, 195))
         self.setGeometry(200, 200, 312, 195)
-        self.setWindowTitle('SPL Refresher')
+        self.setWindowTitle('SPL Refresher 1.1')
         self.setCentralWidget(label)
 
         tray.setToolTip('SPL Refresher')
@@ -37,7 +37,7 @@ class window(QMainWindow):
 
         app.aboutToQuit.connect(self.closeEvent)
 
-        threading.Thread(target=refresher.main, daemon=True).start()
+        threading.Thread(target=Refresher.main, daemon=True).start()
 
     def dobleClick(self, reason: QSystemTrayIcon.ActivationReason):
         if reason == QSystemTrayIcon.DoubleClick:
